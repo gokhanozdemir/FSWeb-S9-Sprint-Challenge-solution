@@ -95,8 +95,9 @@ export default function AppFunctional(props) {
     // ve buna göre state i değiştirir.
   }
 
-  function onChange(evt) {
+  function onChangeHandler(evt) {
     // inputun değerini güncellemek için bunu kullanabilirsiniz
+    setEmail(evt.target.value);
   }
 
   function onSubmit(evt) {
@@ -140,7 +141,13 @@ export default function AppFunctional(props) {
         </button>
       </div>
       <form>
-        <input id="email" type="email" placeholder="email girin"></input>
+        <input
+          id="email"
+          value={email}
+          type="email"
+          placeholder="email girin"
+          onChange={(e) => onChangeHandler(e)}
+        ></input>
         <input id="submit" type="submit"></input>
       </form>
     </div>
