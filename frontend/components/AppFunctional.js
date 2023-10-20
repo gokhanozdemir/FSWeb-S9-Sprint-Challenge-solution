@@ -19,6 +19,19 @@ export default function AppFunctional(props) {
   function getXY() {
     // Koordinatları izlemek için bir state e sahip olmak gerekli değildir.
     // Bunları hesaplayabilmek için "B" nin hangi indexte olduğunu bilmek yeterlidir.
+    const coordinates = [
+      "(1, 1)",
+      "(2, 1)",
+      "(3, 1)",
+      "(1, 2)",
+      "(2, 2)",
+      "(3, 2)",
+      "(1, 3)",
+      "(2, 3)",
+      "(3, 3)",
+    ];
+
+    return coordinates[selected];
   }
 
   function getXYMesaj() {
@@ -39,7 +52,7 @@ export default function AppFunctional(props) {
     // Bu helper bir yön ("sol", "yukarı", vb.) alır ve "B" nin bir sonraki indeksinin ne olduğunu hesaplar.
     // Gridin kenarına ulaşıldığında başka gidecek yer olmadığı için,
     // şu anki indeksi değiştirmemeli.
-    console.log("sonrakiIndex", yon);
+    // console.log("sonrakiIndex", yon);
     if (yon === "left") {
       if (selected % 3 !== 0) {
         setSelected(selected - 1);
@@ -93,7 +106,7 @@ export default function AppFunctional(props) {
   return (
     <div id="wrapper" className={props.className}>
       <div className="info">
-        <h3 id="coordinates">Koordinatlar (2, 2)</h3>
+        <h3 id="coordinates">Koordinatlar {getXY()}</h3>
         <h3 id="steps">{steps} kere ilerlediniz</h3>
       </div>
       <div id="grid">
