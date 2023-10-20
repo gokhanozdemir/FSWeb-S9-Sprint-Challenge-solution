@@ -45,7 +45,7 @@ export default function AppFunctional(props) {
         setSelected(selected - 1);
         setSteps(steps + 1);
       } else {
-        console.log("sol kenar");
+        setMessage("Sola gidemezsiniz");
       }
     }
 
@@ -54,7 +54,7 @@ export default function AppFunctional(props) {
         setSelected(selected + 1);
         setSteps(steps + 1);
       } else {
-        console.log("sağ kenar");
+        setMessage("Sağa gidemezsiniz");
       }
     }
 
@@ -63,7 +63,7 @@ export default function AppFunctional(props) {
         setSelected(selected - 3);
         setSteps(steps + 1);
       } else {
-        console.log("üst kenar");
+        setMessage("Yukarıya gidemezsiniz");
       }
     }
 
@@ -72,7 +72,7 @@ export default function AppFunctional(props) {
         setSelected(selected + 3);
         setSteps(steps + 1);
       } else {
-        console.log("alt kenar");
+        setMessage("Aşağıya gidemezsiniz");
       }
     }
   }
@@ -103,12 +103,11 @@ export default function AppFunctional(props) {
             className={`square${idx === selected ? " active" : ""}`}
           >
             {idx === selected ? "B" : null}
-            {idx}
           </div>
         ))}
       </div>
       <div className="info">
-        <h3 id="message">{}</h3>
+        <h3 id="message">{message}</h3>
       </div>
       <div id="keypad">
         <button onClick={(e) => sonrakiIndex(e.target.id)} id="left">
