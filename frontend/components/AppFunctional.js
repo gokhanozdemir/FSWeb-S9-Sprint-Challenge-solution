@@ -9,6 +9,10 @@ const initialIndex = 4; //  "B" nin bulunduğu indexi
 export default function AppFunctional(props) {
   // State'lerinizi burada oluşturun
   const [selected, setSelected] = useState(initialIndex);
+  const [steps, setSteps] = useState(initialSteps);
+  const [message, setMessage] = useState(initialMessage);
+  const [email, setEmail] = useState(initialEmail);
+
   // AŞAĞIDAKİ HELPERLAR SADECE ÖNERİDİR.
   // Bunları silip kendi mantığınızla sıfırdan geliştirebilirsiniz.
 
@@ -26,6 +30,9 @@ export default function AppFunctional(props) {
   function reset() {
     // Tüm stateleri başlangıç ​​değerlerine sıfırlamak için bu helperı kullanın.
     setSelected(initialIndex);
+    setSteps(initialSteps);
+    setMessage(initialMessage);
+    setEmail(initialEmail);
   }
 
   function sonrakiIndex(yon) {
@@ -36,6 +43,7 @@ export default function AppFunctional(props) {
     if (yon === "left") {
       if (selected % 3 !== 0) {
         setSelected(selected - 1);
+        setSteps(steps + 1);
       } else {
         console.log("sol kenar");
       }
@@ -44,6 +52,7 @@ export default function AppFunctional(props) {
     if (yon === "right") {
       if (selected % 3 !== 2) {
         setSelected(selected + 1);
+        setSteps(steps + 1);
       } else {
         console.log("sağ kenar");
       }
@@ -52,6 +61,7 @@ export default function AppFunctional(props) {
     if (yon === "up") {
       if (selected > 2) {
         setSelected(selected - 3);
+        setSteps(steps + 1);
       } else {
         console.log("üst kenar");
       }
@@ -60,6 +70,7 @@ export default function AppFunctional(props) {
     if (yon === "down") {
       if (selected < 6) {
         setSelected(selected + 3);
+        setSteps(steps + 1);
       } else {
         console.log("alt kenar");
       }
@@ -83,7 +94,7 @@ export default function AppFunctional(props) {
     <div id="wrapper" className={props.className}>
       <div className="info">
         <h3 id="coordinates">Koordinatlar (2, 2)</h3>
-        <h3 id="steps">0 kere ilerlediniz</h3>
+        <h3 id="steps">{steps} kere ilerlediniz</h3>
       </div>
       <div id="grid">
         {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((idx) => (
@@ -97,7 +108,7 @@ export default function AppFunctional(props) {
         ))}
       </div>
       <div className="info">
-        <h3 id="message"></h3>
+        <h3 id="message">{}</h3>
       </div>
       <div id="keypad">
         <button onClick={(e) => sonrakiIndex(e.target.id)} id="left">
